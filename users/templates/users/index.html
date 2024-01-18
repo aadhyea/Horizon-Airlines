@@ -1,0 +1,38 @@
+{%extends "users/layout.html" %}
+{% block body %}
+{%load static%}
+<header>
+    <h1>Airline Name</h1>
+</header>
+
+<nav>
+    <a href="#" class="logo">Airline Logo</a>
+    <a href="#">Home</a>
+    <a href="#">Amenities</a>
+    <a href="#">Offers</a>
+    <a href="{% url 'users:login' %}" style="float: right;">Login</a>
+</nav>
+
+
+<section class="amenities-section">
+    <h2>Amenities</h2>
+    <img src="{% static 'users/media/amenity1.jpeg' %}" alt="Amenity 1">
+    <img src= "{% static 'users/media/amenity2.png' %}" alt="Amenity 2">
+    <!-- Add more amenities as needed -->
+</section>
+
+<section class="offers-section">
+    <h2>Special Offers</h2>
+    <div class="offer-card">
+        <img src="{% static 'users/media/offer1.png' %}"alt="Offer 1">
+        <h3>Special Deal 1</h3>
+        <p>Description of the offer.</p>
+    </div>
+    <div class="offer-card">
+        <img src="{% static 'users/media/offer2.jpg' %}" alt="Offer 2" class="offer2">
+        <h3>Special Deal 2</h3>
+        <p>Description of the offer.</p>
+    </div>
+    <!-- Add more offers as needed -->
+</section>
+{% endblock %}

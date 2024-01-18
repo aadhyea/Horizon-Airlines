@@ -1,0 +1,58 @@
+{%extends "users/layout.html" %}
+
+
+{% block title %}
+     Login 
+{% endblock %}
+
+{% block body %}
+{% load static %}
+
+<div class="login-body">
+    <div class="login-container">
+        <h2>USER LOGIN</h2>
+
+    
+    {% if message %}
+    <br/>
+        <div>{{ message }}</div>
+    {% endif %}
+    <br/>
+
+    <form action="{% url 'users:login' %}" method="post" class="login-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="inp username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="inp password" name="password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Login</button>
+        </div>
+    </form>
+    <div>
+        <center>
+            Don't have an account?&nbsp;&nbsp;<a href="{% url 'users:register' %}">Sign Up</a>
+        </center>
+    </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".inp").forEach(input => {
+            input.addEventListener('input', () => {
+                if ((document.querySelector('.username').value.length === 0) || (document.querySelector('.password').value.length === 0)) {
+                    document.querySelector('.btn').disabled = true;
+                }
+                else {
+                    document.querySelector('.btn').disabled = false;
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
